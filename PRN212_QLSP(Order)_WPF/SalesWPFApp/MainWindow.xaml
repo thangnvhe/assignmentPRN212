@@ -1,0 +1,79 @@
+﻿<Window x:Class="SalesWPFApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesWPFApp"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d"
+        Title="Management"
+        Height="400"
+        Width="850"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        xmlns:control="clr-namespace:SalesWPFApp.Control">
+    <Grid>
+        <TabControl materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
+                    SnapsToDevicePixels="True"
+                    Style="{StaticResource MaterialDesignNavigationRailTabControl}"
+                    TabStripPlacement="Left">
+          
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto"
+                                Height="auto">
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="AccountMultipleOutline" />
+                        <TextBlock HorizontalAlignment="Center"
+                                   Text="Member" />
+                    </StackPanel>
+                </TabItem.Header>
+                <control:ManagementControl ManagementType="MEMBER"
+                                           IsAdmin="{Binding isAdmin}" />
+
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto"
+                                Height="auto">
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="BagPersonalOutline" />
+                        <TextBlock HorizontalAlignment="Center"
+                                   Text="Product" />
+                    </StackPanel>
+                </TabItem.Header>
+                <control:ManagementControl ManagementType="PRODUCT"
+                                           IsAdmin="{Binding isAdmin}" />
+            </TabItem>
+
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto"
+                                Height="auto">
+                        <materialDesign:PackIcon Width="24"
+                                                 Height="24"
+                                                 HorizontalAlignment="Center"
+                                                 Kind="AirplaneClock" />
+                        <TextBlock HorizontalAlignment="Center"
+                                   Text="Order" />
+                    </StackPanel>
+                </TabItem.Header>
+                <control:ManagementControl ManagementType="ORDER"
+                                           IsAdmin="{Binding isAdmin}" />
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>

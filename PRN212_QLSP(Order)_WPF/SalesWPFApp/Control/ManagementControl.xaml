@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="SalesWPFApp.Control.ManagementControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SalesWPFApp.Control"
+             mc:Ignorable="d"
+             d:DesignHeight="600"
+             d:DesignWidth="800"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             Loaded="UserControl_Loaded">
+    <Grid>
+        <TextBlock Margin="10,0,0,8"
+                   Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                   Name="txtManagementName" />
+        <DataGrid Name="dg"
+                  Margin="0,80,0,8"
+                  IsReadOnly="True"
+                  MouseLeftButtonDown="dg_MouseLeftButtonDown"
+                  SelectionChanged="dg_SelectionChanged"
+                  AutoGeneratingColumn="dg_AutoGeneratingColumn"
+                  Loaded="dg_Loaded">
+        </DataGrid>
+        <Button Name="btnAdd"
+                Content="Add"
+                HorizontalAlignment="Left"
+                Margin="10,43,0,0"
+                VerticalAlignment="Top"
+                Width="80"
+                Foreground="#DDFFFFFF"
+                Background="#FF1A7952"
+                Click="btnAdd_Click" />
+        <Button x:Name="btnUpdate"
+                Content="Update"
+                HorizontalAlignment="Left"
+                Margin="108,43,0,0"
+                VerticalAlignment="Top"
+                Width="80"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                IsEnabled="False"
+                Click="btnUpdate_Click" />
+
+        <Button x:Name="btnDelete"
+                Content="Delete"
+                HorizontalAlignment="Left"
+                Margin="210,43,0,0"
+                VerticalAlignment="Top"
+                Width="100"
+                Background="Red"
+                Click="btnDelete_Click"
+                IsEnabled="False" />
+
+        <ComboBox materialDesign:HintAssist.Hint="Field"
+                  HorizontalAlignment="Left"
+                  Margin="646,48,0,0"
+                  VerticalAlignment="Top"
+                  Width="121"
+                  Height="27"
+                  Name="cbProductSearch"
+                  Visibility="Hidden"
+                  SelectedIndex="0">
+            <ComboBoxItem Content="Product ID" />
+            <ComboBoxItem Content="Prouct Name" />
+            <ComboBoxItem Content="Unit Price" />
+            <ComboBoxItem Content="Unit In Stock" />
+        </ComboBox>
+
+        <TextBox x:Name="txtProductSearch"
+                 HorizontalAlignment="Left"
+                 Margin="420,39,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="212"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Hint="Searching by..." 
+                 Visibility="Hidden"
+                 SelectionChanged="txtProductSearch_SelectionChanged"/>
+    </Grid>
+</UserControl>
